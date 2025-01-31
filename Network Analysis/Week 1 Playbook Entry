@@ -1,1 +1,6 @@
+#Wireshark Interface
+The Number (No.) column shows you all the packets in a capture numbered 1 to however many packets were recorded.
+  It could be 1-30 or 1-353224.
 
+The Time column shows you the time (down to 1 millionth of a second) at which a specific packet was captured.
+  The first packet is almost always captured at 0.000000. A lot of packets are captured in less than a second and this is the best way to see which came first.
