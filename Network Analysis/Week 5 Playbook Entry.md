@@ -1,5 +1,6 @@
 IDS and Anomaly Detection
-An Intrusion Detection System (IDS) is a tool used to monitor network or system activity for signs of security threats. It helps detect suspicious behavior, such as hacking attempts, malware infections, or unauthorized access. Anomaly detection is a method used by IDS to spot unusual or abnormal activities that differ from normal behavior. This technique is useful for finding new or unknown threats, as it doesn't rely on pre-known attack patterns. IDS can use different methods, including signature-based detection (looking for known attack patterns) and anomaly-based detection (spotting new threats based on unusual behavior). Together, they improve network security by identifying and responding to potential attacks in real time.
+
+An Intrusion Detection System (IDS) is a tool used to monitor network or system activity for signs of security threats. It helps detect suspicious behavior, such as hacking attempts, malware infections, or unauthorized access. Anomaly detection is a method used by IDS to spot unusual or abnormal activities that stray from normal behavior. This technique is useful for finding new or unknown threats, as it doesn't rely on pre-known attack patterns. IDS can use different methods, including signature-based detection (looking for known attack patterns) and anomaly-based detection (spotting new threats based on unusual behavior). Together, they improve network security by identifying and responding to potential attacks in real time.
 
 How to run Snort for live network monitoring
 
