@@ -1,48 +1,13 @@
-The 4 layers of the TCP/IP Model
-  1. Application Layer
-        Provides various network services to applications (HTTP, FTP, DNS, etc.)
-        Used when applications need network communication (web browsing, email, file transfer, etc.)
-  2. Transport Layer
-        Manages end-to-end communication between devices.
-        Uses TCP or UDP.
-        Ensures data integrity, flow control, and retransmission if necessary.
-  3. Internet Layer
-        Handles logical addressing and routing of packets.
-        Uses IPv4 & IPv6 for addressing and routing and ICMP for diagnostics.
-        Ensures that packets reach the correct destinations.
-  4. Network Access Layer
-        Manages physical transmission and MAC addressing.
-        Uses Ethernet, Wi-Fi, ARP, and PPP to send data over physical media.
-        Ensures device-to-device communication within a local network.
+Malware uses networks to spread, steal data, or receive commands from hackers. By checking network traffic, people can find suspicious activity that might mean malware is present. This includes unusual website requests, strange domain lookups, and repeated connections to certain servers. Tools like Wireshark help find these threats by filtering and analyzing network data.
 
-Options for following streams in Wireshark
-  1. Follow TCP Stream
-        Reconstructs TCP-based communication (HTTP, FTP, SSH).
-        Useful for analysing entire coversations between a client and server.
-  3. Follow HTTP Stream
-        Extracts and displays HTTP traffic between client and server.
-        Useful for troubleshooting web requests and inspecting responses.
+How to Detect Malicious HTTP POST Requests
 
-Checklist for anomaly detection
-  1. Unusual Traffic Patterns?
-        Sudden spikes in network traffic?
-        High amount of outbound connections?
-  2. Unrecognized IP Addresses?
-        Connections to malicious or unknown IPs?
-        Unexpected external communications?
-  3. Unusaul Port Activity?
-        Traffic on non-standard ports (SSH on 8080)?
-        Unexpected open or closed ports?
-  4. Packet Anomalies?
-        Malformed packets or unusual flag combinations?
-        Large payloads or unexpected retransmissions?
-  5. Unauthorized Access Attemps?
-        Repeated failed logins (brute force attacks)?
-        Sudden privilege escalations?
-  6. Unusual Protocol Usage?
-        HTTP traffic in a normally encrypted session?
-        Unexpected FTP transfers?
-  7. Strange Behavior in Logs?
-        Unexpected commands executed?
-        Log files being deleted or modified?
+Open Wireshark and load the network capture file. In the Filter bar, type http && frame contains "POST" and press Enter. Look for POST requests going to unknown or suspicious websites. Right-click a packet and follow the HTTP stream to check if the data looks strange or encoded.
 
+How to Analyze Suspicious DNS Queries
+
+In Wireshark, type dns.qry.name contains "suspiciousdomain.com" in the Filter bar and press Enter. Look for repeated requests to domains linked to malware. Compare the domain name with security reports to see if it’s a known threat. Watch for unusual patterns, such as too many random-looking domain requests.
+
+How to Identify Beaconing Behavior
+
+Use the filter ip.dst == x.x.x.x && tcp.flags == 0x02, replacing x.x.x.x with a suspicious server’s IP. Check for repeated connections happening at set time intervals. Look for small, regular packets, which might mean malware is secretly sending signals to a hacker’s server.
