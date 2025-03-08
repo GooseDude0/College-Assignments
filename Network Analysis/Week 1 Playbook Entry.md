@@ -1,17 +1,31 @@
-Wireshark Interface
+Network traffic analysis means looking at data moving through a network to find problems, detect attacks, and improve performance. By studying these data packets, people can spot unusual activity, investigate security issues, and keep networks safe. Tools like Wireshark help by showing detailed network traffic, making it easier to understand what’s happening.
 
-The NUMBER (No.) column shows you all the packets in a capture numbered from 1 to however many packets were recorded.
-  It could be 1-30 or 1-353224.
+Real-World Use
 
-The TIME column shows you the time (down to 1 millionth of a second) at which a specific packet was captured.
-  The first packet is almost always captured at 0.000000. A lot of packets are captured in less than a second and this is the best way to see which came first.
+Threat Hunting – Searching for signs of cyber attacks by looking at unusual network activity.
 
-The SOURCE column shows you the IP or MAC address that a specific packet came from.
-The DESTINATION column shows you the IP or MAC address of where the packet went.
+Intrusion Detection System (IDS) Analysis – Checking network traffic to spot hackers trying to break in.
 
-The PROTOCOL column shows you the name of the protocol used in the packet
-  These include TLSv1.2, TCP, MDNS, DNS, SSDP, UDP, etc.
+Incident Response – Investigating network data to understand and stop security breaches.
 
-The LENGTH column shows you the size of the packet in bytes.
+How to Open a PCAP File in Wireshark
 
-The INFO column show you summary information about the packet.
+Open Wireshark. Click File > Open. Choose the PCAP file and click Open. You should now see the captured network traffic.
+
+How to Apply Filters in Wireshark
+
+Find the Filter bar at the top.
+
+Use these filters to focus on specific traffic:
+
+HTTP Traffic: Type http and press Enter.
+
+DNS Traffic: Type dns and press Enter.
+
+TCP Traffic: Type tcp and press Enter.
+
+Wireshark should now only show packets matching your filter.
+
+How to Export a Filtered Packet Capture
+
+Apply a filter to show only the packets you need. Click File > Export Specified Packets. Choose the file format (PCAP or PCAPNG) and name the file. Click Save to store the filtered packets.
