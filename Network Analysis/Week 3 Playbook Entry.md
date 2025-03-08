@@ -1,27 +1,19 @@
-Logging and interpreting flow traffic using the statistics tools in Wireshark. 
+Threat hunting means actively looking for cyber threats before they cause any damage. Instead of waiting for security alerts, people check network traffic for unusual activity that may indicate an attack. Tools like Wireshark help them find hidden threats, track malware communication, and stop data breaches early.
 
-The main tools for analysing flow traffic are Protocol Hierarchy, Conversations, I/O Graphs, and Flow Graph.
+How to Filter DNS Traffic to Find Malicious Queries
 
-Interpretation
+Open Wireshark and load the packet capture file. In the Filter bar, type dns and press Enter. Look for suspicious domain requests, such as: Random, strange domain names (e.g., abc123xyz.com), repeated requests to unknown domains, and queries to known malicious websites (check threat lists). Right-click on a suspicious DNS request and follow the TCP stream for more details.
 
-Protocol Hierarchy
-  This tool shows a breakdown of the protocols in the capture file and how they relate to each other.
+How to Detect Data Theft (Exfiltration)
 
-Conversations
-  This tool provides a detailed summary of all the network conversations (flows) based on various protocols such as TCP, UDP, etc.
+In Wireshark, type tcp and frame.len > 1000 in the Filter bar and press Enter. This should show large data transfers, which may indicate stolen data being sent out. Look for repeated large packets sent to outside IP addresses. Check for encrypted traffic going to unknown locations, as this could mean stolen data is being sent secretly.
 
-I/O Graphs
-  This tool provides a graphical representation of packet traffic over time.
+How to Identify C2 (Command & Control) Communication
 
-Flow Graph
-  This tool shows the sequence of packets exchanged between two hosts in a conversation.
+Find a suspicious external IP address from your analysis or threat reports. Use the filter ip.dst == x.x.x.x, replacing x.x.x.x with the suspect C2 server’s IP. Look for patterns such as:
 
-Logging
+Repeated connections at fixed time intervals (i.e. every 10 minutes).
 
-You can do 2 things to log the traffic for later anaylysis.
+Small, frequent packets used to stay hidden.
 
-1. Exporting Packet Data
-  After applying relevant filters to identify flows of interest, you can export packets using File -> Export Specified Packets.
-
-2. Capture Options
-  You can also set Wireshark to log specific types of flows during live captures by adjusting Capture Options (under Capture → Options) and specifying the relevant filter to capture the traffic you're interested in.
+Encrypted or unknown protocol traffic.
